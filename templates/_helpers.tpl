@@ -49,14 +49,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "rustdesk-helm.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "rustdesk-helm.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "rustdesk-helm.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
